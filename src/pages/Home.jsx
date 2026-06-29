@@ -35,7 +35,7 @@ export default function Home() {
     <div className="max-w-6xl mx-auto px-4 py-16">
       {/* Hero */}
       <section className="mb-20">
-        <div className="border-[3px] border-black p-8 md:p-12">
+        <div className="border-[3px] border-black p-8 md:p-12 shadow-brutal">
           <p className="font-body text-sm font-bold tracking-[0.3em] mb-4 text-gold">CVITAE STUDIO</p>
           <h1 className="font-display text-7xl md:text-9xl leading-none tracking-tight mb-6">
             CÓDIGO QUE<br />
@@ -51,7 +51,7 @@ export default function Home() {
               href="https://wa.me/595992954169"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-6 py-4 bg-black text-cream border-[3px] border-black font-body font-bold text-sm tracking-wide hover:bg-gold hover:text-black transition-colors duration-100"
+              className="px-6 py-4 bg-black text-cream border-[3px] border-black font-body font-bold text-sm tracking-wide shadow-brutal-sm hover:bg-gold hover:text-black hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all duration-100"
             >
               HABLEMOS AHORA
             </a>

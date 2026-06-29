@@ -2,7 +2,7 @@ const WA_URL = 'https://wa.me/595992954169'
 
 export default function ServiceCard({ illustration, title, copy, techBadges, clients }) {
   return (
-    <article className="border-[3px] border-black bg-cream flex flex-col">
+    <article className="border-[3px] border-black bg-cream flex flex-col shadow-brutal transition-shadow hover:shadow-none hover:translate-x-[6px] hover:translate-y-[6px] duration-100">
       <div className="border-b-[3px] border-black">
         <img
           src={`/illustrations/${illustration}`}
@@ -46,7 +46,7 @@ export default function ServiceCard({ illustration, title, copy, techBadges, cli
             href={WA_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-5 py-3 bg-black text-cream border-[3px] border-black font-body font-bold text-sm tracking-wide hover:bg-gold hover:text-black transition-colors duration-100"
+            className="inline-flex items-center gap-2 px-5 py-3 bg-black text-cream border-[3px] border-black font-body font-bold text-sm tracking-wide shadow-brutal-sm hover:bg-gold hover:text-black hover:shadow-none hover:translate-x-[4px] hover:translate-y-[4px] transition-all duration-100"
           >
             HABLEMOS POR WHATSAPP
           </a>

@@ -29,3 +29,15 @@ body {
   margin: 0;
   padding: 0;
 }
+
+.shadow-brutal {
+  box-shadow: 6px 6px 0px 0px #111111;
+}
+
+.shadow-brutal-sm {
+  box-shadow: 4px 4px 0px 0px #111111;
+}
+
+.shadow-brutal-gold {
+  box-shadow: 6px 6px 0px 0px #C9A84C;
+}

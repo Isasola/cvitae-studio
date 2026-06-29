@@ -1,35 +1,80 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 280" fill="none">
-  <rect width="400" height="280" fill="#F5F0E8"/>
-  <!-- Dark screen / target area -->
-  <rect x="218" y="44" width="158" height="200" fill="#111111" stroke="#111111" stroke-width="3"/>
-  <!-- Screen inner frame -->
-  <rect x="226" y="52" width="142" height="184" fill="#1a1a1a"/>
-  <!-- Empty slot (dashed gold) -->
-  <rect x="234" y="112" width="126" height="86" fill="#F5F0E8" stroke="#C9A84C" stroke-width="3" stroke-dasharray="7,3"/>
-  <text x="252" y="162" font-family="Arial, sans-serif" font-size="13" font-weight="900" fill="#111111">[ SLOT ]</text>
-  <!-- LEGO/metallic block body -->
-  <rect x="24" y="80" width="158" height="128" fill="#C9A84C" stroke="#111111" stroke-width="3"/>
-  <!-- Block face metallic sheen lines -->
-  <line x1="24" y1="100" x2="182" y2="100" stroke="#111111" stroke-width="1" opacity="0.4"/>
-  <line x1="24" y1="120" x2="182" y2="120" stroke="#111111" stroke-width="1" opacity="0.4"/>
-  <!-- Block studs (top) -->
-  <rect x="46" y="62" width="26" height="20" fill="#C9A84C" stroke="#111111" stroke-width="3"/>
-  <rect x="82" y="62" width="26" height="20" fill="#C9A84C" stroke="#111111" stroke-width="3"/>
-  <rect x="118" y="62" width="26" height="20" fill="#C9A84C" stroke="#111111" stroke-width="3"/>
-  <!-- Laser-etched code lines -->
-  <line x1="38" y1="114" x2="168" y2="114" stroke="#111111" stroke-width="2"/>
-  <text x="40" y="112" font-family="'Courier New', monospace" font-size="9" fill="#111111" font-weight="900">const block = {'{'}</text>
-  <line x1="38" y1="130" x2="168" y2="130" stroke="#111111" stroke-width="1"/>
-  <text x="50" y="128" font-family="'Courier New', monospace" font-size="9" fill="#111111">  style: premium</text>
-  <line x1="38" y1="146" x2="168" y2="146" stroke="#111111" stroke-width="1"/>
-  <text x="50" y="144" font-family="'Courier New', monospace" font-size="9" fill="#111111">  copy: true</text>
-  <line x1="38" y1="162" x2="168" y2="162" stroke="#111111" stroke-width="1"/>
-  <text x="40" y="160" font-family="'Courier New', monospace" font-size="9" fill="#111111">{'}'}</text>
-  <!-- Snap arrow -->
-  <line x1="184" y1="144" x2="230" y2="155" stroke="#111111" stroke-width="3"/>
-  <polygon points="230,155 218,146 219,160" fill="#111111"/>
-  <!-- Snap indicator dots -->
-  <rect x="196" y="138" width="5" height="5" fill="#111111"/>
-  <rect x="206" y="141" width="5" height="5" fill="#111111"/>
-  <rect x="216" y="144" width="5" height="5" fill="#111111"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" fill="none">
+  <rect width="400" height="300" fill="#F5F0E8"/>
+
+  <!-- === RIGHT: Dark terminal / target screen === -->
+  <!-- Screen shadow -->
+  <rect x="224" y="34" width="156" height="234" fill="#111111" transform="translate(5,5)"/>
+  <!-- Screen body -->
+  <rect x="224" y="34" width="156" height="234" fill="#1a1a1a" stroke="#111111" stroke-width="3"/>
+  <!-- Screen top bar -->
+  <rect x="224" y="34" width="156" height="24" fill="#111111"/>
+  <!-- Traffic lights in bar -->
+  <rect x="234" y="41" width="10" height="10" fill="#C9A84C"/>
+  <rect x="250" y="41" width="10" height="10" fill="#C9A84C"/>
+  <rect x="266" y="41" width="10" height="10" fill="#C9A84C"/>
+
+  <!-- Existing code lines (grayed out) -->
+  <rect x="234" y="68" width="100" height="7" fill="#C9A84C" opacity="0.25"/>
+  <rect x="234" y="80" width="72" height="7" fill="#F5F0E8" opacity="0.12"/>
+  <rect x="234" y="92" width="88" height="7" fill="#F5F0E8" opacity="0.12"/>
+
+  <!-- Empty slot (dashed gold border) -->
+  <rect x="232" y="116" width="140" height="100" fill="#111111" opacity="0.4"/>
+  <rect x="232" y="116" width="140" height="100" fill="none" stroke="#C9A84C" stroke-width="2.5" stroke-dasharray="8,4"/>
+  <!-- Slot cross-hair center -->
+  <line x1="232" y1="166" x2="372" y2="166" stroke="#C9A84C" stroke-width="1" stroke-dasharray="4,4" opacity="0.5"/>
+  <line x1="302" y1="116" x2="302" y2="216" stroke="#C9A84C" stroke-width="1" stroke-dasharray="4,4" opacity="0.5"/>
+  <!-- Slot label -->
+  <rect x="272" y="152" width="60" height="28" fill="#C9A84C"/>
+  <text x="280" y="171" font-family="'Space Grotesk',Arial,sans-serif" font-size="13" font-weight="900" fill="#111111">SLOT</text>
+
+  <!-- Code lines below slot -->
+  <rect x="234" y="228" width="68" height="7" fill="#F5F0E8" opacity="0.12"/>
+  <rect x="234" y="240" width="50" height="7" fill="#C9A84C" opacity="0.2"/>
+  <rect x="234" y="252" width="80" height="7" fill="#F5F0E8" opacity="0.12"/>
+
+  <!-- === LEFT: LEGO/metallic block === -->
+  <!-- Block shadow -->
+  <rect x="14" y="78" width="168" height="144" fill="#111111" transform="translate(5,5)"/>
+  <!-- Block body -->
+  <rect x="14" y="78" width="168" height="144" fill="#C9A84C" stroke="#111111" stroke-width="3"/>
+
+  <!-- Block top studs (3D look) -->
+  <!-- Stud 1 -->
+  <rect x="30" y="62" width="28" height="18" fill="#C9A84C" stroke="#111111" stroke-width="3"/>
+  <rect x="32" y="62" width="24" height="4" fill="#111111" opacity="0.2"/>
+  <!-- Stud 2 -->
+  <rect x="70" y="62" width="28" height="18" fill="#C9A84C" stroke="#111111" stroke-width="3"/>
+  <rect x="72" y="62" width="24" height="4" fill="#111111" opacity="0.2"/>
+  <!-- Stud 3 -->
+  <rect x="110" y="62" width="28" height="18" fill="#C9A84C" stroke="#111111" stroke-width="3"/>
+  <rect x="112" y="62" width="24" height="4" fill="#111111" opacity="0.2"/>
+  <!-- Stud 4 -->
+  <rect x="150" y="62" width="28" height="18" fill="#C9A84C" stroke="#111111" stroke-width="3"/>
+  <rect x="152" y="62" width="24" height="4" fill="#111111" opacity="0.2"/>
+
+  <!-- Bottom studs -->
+  <rect x="30" y="220" width="28" height="14" fill="#C9A84C" stroke="#111111" stroke-width="3"/>
+  <rect x="110" y="220" width="28" height="14" fill="#C9A84C" stroke="#111111" stroke-width="3"/>
+
+  <!-- Laser etched code (engraved look) -->
+  <rect x="22" y="90" width="152" height="2" fill="#111111" opacity="0.35"/>
+  <text x="26" y="108" font-family="'Courier New',monospace" font-size="10" font-weight="900" fill="#111111" opacity="0.8">const Block = () =&gt; {'{'}</text>
+  <rect x="22" y="112" width="152" height="1.5" fill="#111111" opacity="0.2"/>
+  <text x="34" y="128" font-family="'Courier New',monospace" font-size="9" fill="#111111" opacity="0.75">  style: "premium"</text>
+  <rect x="22" y="132" width="152" height="1.5" fill="#111111" opacity="0.2"/>
+  <text x="34" y="148" font-family="'Courier New',monospace" font-size="9" fill="#111111" opacity="0.75">  copy: true</text>
+  <rect x="22" y="152" width="152" height="1.5" fill="#111111" opacity="0.2"/>
+  <text x="34" y="168" font-family="'Courier New',monospace" font-size="9" fill="#111111" opacity="0.75">  price: 19</text>
+  <rect x="22" y="172" width="152" height="1.5" fill="#111111" opacity="0.2"/>
+  <text x="26" y="188" font-family="'Courier New',monospace" font-size="10" font-weight="900" fill="#111111" opacity="0.8">{'}'}</text>
+  <rect x="22" y="192" width="152" height="2" fill="#111111" opacity="0.35"/>
+
+  <!-- Snap arrow sequence -->
+  <path d="M184 160 L218 160" stroke="#111111" stroke-width="3.5" stroke-linecap="square" fill="none"/>
+  <polygon points="218,153 230,160 218,167" fill="#111111"/>
+  <!-- Snap dots -->
+  <rect x="186" y="155" width="6" height="6" fill="#111111" opacity="0.5"/>
+  <rect x="196" y="155" width="6" height="6" fill="#111111" opacity="0.7"/>
+  <rect x="206" y="155" width="6" height="6" fill="#111111"/>
 </svg>

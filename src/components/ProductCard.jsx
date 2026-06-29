@@ -3,7 +3,7 @@ export default function ProductCard({ product }) {
   const isComingSoon = status === 'coming_soon'
 
   return (
-    <article className="border-[3px] border-black bg-cream flex flex-col relative">
+    <article className="border-[3px] border-black bg-cream flex flex-col relative shadow-brutal transition-all hover:shadow-none hover:translate-x-[6px] hover:translate-y-[6px] duration-100">
       {isComingSoon && (
         <div className="absolute inset-0 z-10 bg-cream/90 border-[3px] border-black flex items-center justify-center">
           <span className="font-display text-4xl tracking-widest">COMING SOON</span>
@@ -14,7 +14,7 @@ export default function ProductCard({ product }) {
         {screenshot ? (
           <img src={screenshot} alt={name} className="w-full h-full object-cover" loading="lazy" />
         ) : (
-          <div className="w-full h-full flex items-center justify-center">
+          <div className="w-full h-full flex items-center justify-center bg-black/5">
             <span className="font-display text-5xl text-black/20">PREVIEW</span>
           </div>
         )}
@@ -26,7 +26,7 @@ export default function ProductCard({ product }) {
             <h3 className="font-display text-3xl leading-none">{name.toUpperCase()}</h3>
             <p className="font-body text-sm text-black/70 mt-1">{tagline}</p>
           </div>
-          <div className="flex-shrink-0 border-[3px] border-black px-3 py-1 bg-gold">
+          <div className="flex-shrink-0 border-[3px] border-black px-3 py-1 bg-gold shadow-brutal-sm">
             <span className="font-display text-2xl">${price}</span>
             <span className="font-body text-xs font-bold ml-1">{currency}</span>
           </div>
@@ -40,7 +40,7 @@ export default function ProductCard({ product }) {
               href={buyUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-1 text-center py-3 bg-black text-cream border-[3px] border-black font-body font-bold text-sm tracking-wide hover:bg-gold hover:text-black transition-colors duration-100"
+              className="flex-1 text-center py-3 bg-black text-cream border-[3px] border-black font-body font-bold text-sm tracking-wide shadow-brutal-sm hover:bg-gold hover:text-black hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all duration-100"
             >
               BUY — ${price}
             </a>

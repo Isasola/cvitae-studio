@@ -1,11 +1,49 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 52" fill="none">
-  <!-- Left bracket -->
-  <rect x="4" y="4" width="6" height="44" fill="#111111"/>
-  <rect x="4" y="4" width="20" height="6" fill="#111111"/>
-  <rect x="4" y="42" width="20" height="6" fill="#111111"/>
-  <!-- CVITAE text block -->
-  <text x="32" y="34" font-family="'Bebas Neue', Impact, sans-serif" font-size="34" font-weight="400" fill="#111111" letter-spacing="1">CVITAE</text>
-  <!-- STUDIO tag -->
-  <rect x="33" y="38" width="64" height="11" fill="#C9A84C"/>
-  <text x="37" y="47" font-family="'Space Grotesk', Arial, sans-serif" font-size="9" font-weight="700" fill="#111111" letter-spacing="2">STUDIO</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210 54" fill="none">
+  <!-- Left bracket — geometric, paths -->
+  <rect x="4" y="4" width="7" height="46" fill="#111111"/>
+  <rect x="4" y="4" width="22" height="7" fill="#111111"/>
+  <rect x="4" y="43" width="22" height="7" fill="#111111"/>
+
+  <!-- C -->
+  <path d="M38 10 L38 44 M38 10 L58 10 M38 44 L58 44" stroke="#111111" stroke-width="6" stroke-linecap="square" fill="none"/>
+  <!-- V -->
+  <path d="M62 10 L70 44 L78 10" stroke="#111111" stroke-width="6" stroke-linecap="square" fill="none"/>
+  <!-- I -->
+  <rect x="82" y="10" width="6" height="34" fill="#111111"/>
+  <!-- T -->
+  <rect x="92" y="10" width="22" height="6" fill="#111111"/>
+  <rect x="100" y="10" width="6" height="34" fill="#111111"/>
+  <!-- A -->
+  <path d="M118 44 L126 10 L134 44 M120 30 L132 30" stroke="#111111" stroke-width="6" stroke-linecap="square" fill="none"/>
+  <!-- E -->
+  <path d="M138 10 L138 44 M138 10 L158 10 M138 27 L154 27 M138 44 L158 44" stroke="#111111" stroke-width="6" stroke-linecap="square" fill="none"/>
+
+  <!-- STUDIO tag (gold fill) -->
+  <rect x="36" y="38" width="66" height="12" fill="#C9A84C"/>
+  <!-- STUDIO text via small rectangles (pixel-like, no font dependency) -->
+  <!-- S -->
+  <rect x="38" y="40" width="6" height="2" fill="#111111"/>
+  <rect x="38" y="40" width="2" height="4" fill="#111111"/>
+  <rect x="38" y="44" width="6" height="2" fill="#111111"/>
+  <rect x="42" y="44" width="2" height="4" fill="#111111"/>
+  <rect x="38" y="48" width="6" height="2" fill="#111111"/>
+  <!-- T -->
+  <rect x="46" y="40" width="7" height="2" fill="#111111"/>
+  <rect x="49" y="40" width="2" height="10" fill="#111111"/>
+  <!-- U -->
+  <rect x="55" y="40" width="2" height="8" fill="#111111"/>
+  <rect x="55" y="48" width="6" height="2" fill="#111111"/>
+  <rect x="59" y="40" width="2" height="8" fill="#111111"/>
+  <!-- D -->
+  <rect x="63" y="40" width="2" height="10" fill="#111111"/>
+  <rect x="63" y="40" width="4" height="2" fill="#111111"/>
+  <rect x="65" y="42" width="2" height="6" fill="#111111"/>
+  <rect x="63" y="48" width="4" height="2" fill="#111111"/>
+  <!-- I -->
+  <rect x="70" y="40" width="2" height="10" fill="#111111"/>
+  <!-- O -->
+  <rect x="74" y="40" width="6" height="2" fill="#111111"/>
+  <rect x="74" y="48" width="6" height="2" fill="#111111"/>
+  <rect x="74" y="40" width="2" height="10" fill="#111111"/>
+  <rect x="78" y="40" width="2" height="10" fill="#111111"/>
 </svg>

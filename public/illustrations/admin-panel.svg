@@ -1,51 +1,97 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 280" fill="none">
-  <rect width="400" height="280" fill="#F5F0E8"/>
-  <!-- Input pipe (left) -->
-  <rect x="28" y="16" width="44" height="130" fill="#111111"/>
-  <!-- Pipe top cap -->
-  <rect x="18" y="16" width="64" height="14" fill="#111111"/>
-  <!-- Falling papers (chaotic) -->
-  <rect x="32" y="152" width="30" height="22" fill="#F5F0E8" stroke="#111111" stroke-width="2" transform="rotate(-12,47,163)"/>
-  <rect x="30" y="178" width="24" height="18" fill="#F5F0E8" stroke="#111111" stroke-width="2" transform="rotate(9,42,187)"/>
-  <rect x="34" y="204" width="28" height="18" fill="#F5F0E8" stroke="#111111" stroke-width="2" transform="rotate(-6,48,213)"/>
-  <!-- Lines on papers (data scribbles) -->
-  <line x1="35" y1="154" x2="55" y2="154" stroke="#111111" stroke-width="1" transform="rotate(-12,47,163)"/>
-  <line x1="35" y1="158" x2="50" y2="158" stroke="#111111" stroke-width="1" transform="rotate(-12,47,163)"/>
-  <line x1="35" y1="162" x2="55" y2="162" stroke="#111111" stroke-width="1" transform="rotate(-12,47,163)"/>
-  <!-- Broken table symbol -->
-  <rect x="26" y="168" width="44" height="4" fill="#111111" transform="rotate(6,48,170)"/>
-  <rect x="28" y="172" width="4" height="14" fill="#111111" transform="rotate(6,30,179)"/>
-  <rect x="62" y="170" width="4" height="14" fill="#111111" transform="rotate(-9,64,177)"/>
-  <!-- Connector pipe to machine -->
-  <rect x="72" y="178" width="58" height="22" fill="#111111"/>
-  <!-- Machine / processor -->
-  <rect x="128" y="128" width="162" height="108" fill="#111111"/>
-  <rect x="136" y="136" width="146" height="92" fill="#F5F0E8" stroke="#111111" stroke-width="2"/>
-  <!-- Machine knobs row -->
-  <rect x="141" y="141" width="16" height="16" fill="#C9A84C" stroke="#111111" stroke-width="2"/>
-  <rect x="163" y="141" width="16" height="16" fill="#C9A84C" stroke="#111111" stroke-width="2"/>
-  <rect x="185" y="141" width="16" height="16" fill="#C9A84C" stroke="#111111" stroke-width="2"/>
-  <!-- Progress bar -->
-  <rect x="141" y="168" width="130" height="12" fill="#111111"/>
-  <rect x="141" y="168" width="88" height="12" fill="#C9A84C"/>
-  <!-- Machine label -->
-  <text x="154" y="202" font-family="Arial, sans-serif" font-size="10" font-weight="900" fill="#111111">PROCESANDO...</text>
-  <!-- Connector pipe to screen -->
-  <rect x="290" y="176" width="18" height="24" fill="#111111"/>
-  <!-- Output screen (right) -->
-  <rect x="306" y="72" width="78" height="136" fill="#F5F0E8" stroke="#111111" stroke-width="3"/>
-  <!-- Screen top bar -->
-  <rect x="306" y="72" width="78" height="22" fill="#111111"/>
-  <!-- Screen header gold bar -->
-  <rect x="312" y="78" width="48" height="10" fill="#C9A84C"/>
-  <!-- Gold bar charts -->
-  <rect x="314" y="178" width="12" height="22" fill="#C9A84C" stroke="#111111" stroke-width="2"/>
-  <rect x="330" y="162" width="12" height="38" fill="#C9A84C" stroke="#111111" stroke-width="2"/>
-  <rect x="346" y="148" width="12" height="52" fill="#C9A84C" stroke="#111111" stroke-width="2"/>
-  <rect x="362" y="138" width="12" height="62" fill="#C9A84C" stroke="#111111" stroke-width="2"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" fill="none">
+  <rect width="400" height="300" fill="#F5F0E8"/>
+
+  <!-- === LEFT: CHAOS INPUT === -->
+  <!-- Vertical pipe -->
+  <rect x="30" y="0" width="36" height="120" fill="#111111"/>
+  <rect x="22" y="0" width="52" height="14" fill="#111111"/>
+  <!-- Pipe rivets -->
+  <rect x="26" y="22" width="8" height="8" fill="#C9A84C" stroke="#111111" stroke-width="1.5"/>
+  <rect x="50" y="22" width="8" height="8" fill="#C9A84C" stroke="#111111" stroke-width="1.5"/>
+  <rect x="26" y="44" width="8" height="8" fill="#C9A84C" stroke="#111111" stroke-width="1.5"/>
+  <rect x="50" y="44" width="8" height="8" fill="#C9A84C" stroke="#111111" stroke-width="1.5"/>
+
+  <!-- Falling document 1 (crumpled look) -->
+  <path d="M36 128 L60 128 L64 132 L64 154 L56 158 L32 158 L28 152 L28 132 Z" fill="#F5F0E8" stroke="#111111" stroke-width="2.5" transform="rotate(-8,46,143)"/>
+  <path d="M34 136 L56 136" stroke="#111111" stroke-width="1.5" transform="rotate(-8,46,143)"/>
+  <path d="M34 142 L50 142" stroke="#111111" stroke-width="1" transform="rotate(-8,46,143)"/>
+
+  <!-- Falling doc 2 -->
+  <path d="M34 168 L58 168 L62 172 L62 192 L54 196 L30 196 L26 190 L26 172 Z" fill="#F5F0E8" stroke="#111111" stroke-width="2.5" transform="rotate(10,44,182)"/>
+  <path d="M32 176 L54 176" stroke="#111111" stroke-width="1.5" transform="rotate(10,44,182)"/>
+  <path d="M32 182 L48 182" stroke="#111111" stroke-width="1" transform="rotate(10,44,182)"/>
+
+  <!-- Broken table icon -->
+  <path d="M22 210 L72 210" stroke="#111111" stroke-width="3" stroke-linecap="square"/>
+  <path d="M28 210 L24 228" stroke="#111111" stroke-width="3" stroke-linecap="square" transform="rotate(8,26,219)"/>
+  <path d="M66 210 L70 228" stroke="#111111" stroke-width="3" stroke-linecap="square" transform="rotate(-12,68,219)"/>
+  <!-- Crack on table -->
+  <path d="M44 208 L40 216 L48 220 L44 228" stroke="#C9A84C" stroke-width="2" fill="none"/>
+
+  <!-- Connector pipe left→machine -->
+  <path d="M68 196 L130 196 L130 210" stroke="#111111" stroke-width="14" stroke-linecap="square" fill="none"/>
+
+  <!-- === CENTER: MACHINE === -->
+  <!-- Machine shadow -->
+  <rect x="134" y="124" width="152" height="120" fill="#111111" transform="translate(5,5)"/>
+  <!-- Machine body -->
+  <rect x="134" y="124" width="152" height="120" fill="#111111" stroke="#111111" stroke-width="3"/>
+  <rect x="142" y="132" width="136" height="104" fill="#F5F0E8" stroke="#111111" stroke-width="2"/>
+
+  <!-- Knob row -->
+  <circle cx="162" cy="150" r="10" fill="#C9A84C" stroke="#111111" stroke-width="2"/>
+  <circle cx="162" cy="150" r="4" fill="#111111"/>
+  <circle cx="186" cy="150" r="10" fill="#C9A84C" stroke="#111111" stroke-width="2"/>
+  <circle cx="186" cy="150" r="4" fill="#111111"/>
+  <circle cx="210" cy="150" r="10" fill="#C9A84C" stroke="#111111" stroke-width="2"/>
+  <circle cx="210" cy="150" r="4" fill="#111111"/>
+
+  <!-- Processing progress bar -->
+  <rect x="148" y="170" width="122" height="12" fill="#111111"/>
+  <rect x="148" y="170" width="86" height="12" fill="#C9A84C"/>
+  <!-- Blinking indicator -->
+  <rect x="256" y="170" width="14" height="12" fill="#C9A84C" opacity="0.6"/>
+
+  <!-- Screen on machine face -->
+  <rect x="148" y="192" width="122" height="26" fill="#111111"/>
+  <text x="154" y="209" font-family="'Space Grotesk',Arial,sans-serif" font-size="10" font-weight="700" fill="#C9A84C">PROCESANDO DATOS...</text>
+
+  <!-- Vent slits -->
+  <rect x="150" y="226" width="118" height="3" fill="#111111" opacity="0.3"/>
+  <rect x="150" y="232" width="118" height="3" fill="#111111" opacity="0.3"/>
+
+  <!-- Connector pipe machine→screen -->
+  <path d="M286 196 L324 196" stroke="#111111" stroke-width="14" stroke-linecap="square" fill="none"/>
+
+  <!-- === RIGHT: CLEAN OUTPUT SCREEN === -->
+  <!-- Screen shadow -->
+  <rect x="326" y="54" width="60" height="184" fill="#111111" transform="translate(5,5)"/>
+  <!-- Screen body -->
+  <rect x="326" y="54" width="60" height="184" fill="#F5F0E8" stroke="#111111" stroke-width="3"/>
+  <!-- Screen bezel top -->
+  <rect x="326" y="54" width="60" height="22" fill="#111111"/>
+  <!-- Screen header gold accent -->
+  <rect x="332" y="60" width="36" height="10" fill="#C9A84C"/>
+
+  <!-- Bar chart (gold bars rising) -->
+  <rect x="334" y="196" width="10" height="28" fill="#C9A84C" stroke="#111111" stroke-width="2"/>
+  <rect x="348" y="180" width="10" height="44" fill="#C9A84C" stroke="#111111" stroke-width="2"/>
+  <rect x="362" y="162" width="10" height="62" fill="#C9A84C" stroke="#111111" stroke-width="2"/>
+  <!-- Trend arrow -->
+  <path d="M334 194 L372 162" stroke="#111111" stroke-width="2" stroke-dasharray="3,2" fill="none"/>
+  <polygon points="372,162 364,164 370,170" fill="#111111"/>
   <!-- Chart baseline -->
-  <line x1="312" y1="200" x2="376" y2="200" stroke="#111111" stroke-width="2"/>
+  <path d="M332 226 L378 226" stroke="#111111" stroke-width="2"/>
+
+  <!-- Mini metrics on screen -->
+  <rect x="332" y="84" width="48" height="14" fill="#111111"/>
+  <rect x="332" y="84" width="32" height="14" fill="#C9A84C"/>
+  <rect x="332" y="102" width="48" height="14" fill="#111111"/>
+  <rect x="332" y="102" width="40" height="14" fill="#C9A84C"/>
+  <rect x="332" y="120" width="48" height="14" fill="#111111"/>
+  <rect x="332" y="120" width="22" height="14" fill="#C9A84C"/>
+
   <!-- Screen stand -->
-  <rect x="337" y="208" width="16" height="14" fill="#111111"/>
-  <rect x="320" y="220" width="50" height="8" fill="#111111"/>
+  <rect x="348" y="238" width="16" height="14" fill="#111111"/>
+  <rect x="334" y="250" width="44" height="8" fill="#111111"/>
 </svg>

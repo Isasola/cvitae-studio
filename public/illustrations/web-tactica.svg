@@ -1,39 +1,74 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 280" fill="none">
-  <rect width="400" height="280" fill="#F5F0E8"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" fill="none">
+  <!-- Background -->
+  <rect width="400" height="300" fill="#F5F0E8"/>
+
+  <!-- Building shadow offset -->
+  <rect x="108" y="93" width="160" height="148" fill="#111111"/>
   <!-- Building body -->
-  <rect x="120" y="100" width="160" height="140" fill="#F5F0E8" stroke="#111111" stroke-width="3"/>
-  <!-- Building windows row 1 -->
-  <rect x="135" y="115" width="30" height="25" fill="#111111"/>
-  <rect x="175" y="115" width="30" height="25" fill="#111111"/>
-  <rect x="235" y="115" width="30" height="25" fill="#111111"/>
-  <!-- Building windows row 2 (gold) -->
-  <rect x="135" y="155" width="30" height="25" fill="#C9A84C" stroke="#111111" stroke-width="2"/>
-  <rect x="175" y="155" width="30" height="25" fill="#C9A84C" stroke="#111111" stroke-width="2"/>
-  <rect x="235" y="155" width="30" height="25" fill="#C9A84C" stroke="#111111" stroke-width="2"/>
+  <rect x="100" y="85" width="160" height="148" fill="#F5F0E8" stroke="#111111" stroke-width="3"/>
+
+  <!-- Window row 1 - dark -->
+  <rect x="116" y="103" width="34" height="26" fill="#111111" rx="0"/>
+  <rect x="160" y="103" width="34" height="26" fill="#111111" rx="0"/>
+  <rect x="204" y="103" width="34" height="26" fill="#111111" rx="0"/>
+
+  <!-- Window row 2 - gold lit -->
+  <rect x="116" y="143" width="34" height="26" fill="#C9A84C" stroke="#111111" stroke-width="2"/>
+  <rect x="160" y="143" width="34" height="26" fill="#C9A84C" stroke="#111111" stroke-width="2"/>
+  <rect x="204" y="143" width="34" height="26" fill="#C9A84C" stroke="#111111" stroke-width="2"/>
+
   <!-- Door -->
-  <rect x="183" y="210" width="34" height="30" fill="#111111"/>
-  <!-- Chimneys -->
-  <rect x="140" y="68" width="18" height="34" fill="#111111"/>
-  <rect x="175" y="55" width="18" height="47" fill="#111111"/>
-  <rect x="245" y="72" width="18" height="30" fill="#111111"/>
-  <!-- Smoke puffs (geometric) -->
-  <rect x="142" y="56" width="14" height="10" fill="#C9A84C" stroke="#111111" stroke-width="2"/>
-  <rect x="177" y="42" width="14" height="10" fill="#C9A84C" stroke="#111111" stroke-width="2"/>
-  <rect x="247" y="60" width="14" height="10" fill="#C9A84C" stroke="#111111" stroke-width="2"/>
-  <!-- Gold magnet on roof -->
-  <rect x="175" y="75" width="50" height="24" fill="#C9A84C" stroke="#111111" stroke-width="3"/>
-  <text x="180" y="92" font-family="Arial, sans-serif" font-size="11" font-weight="900" fill="#111111">MAGNET</text>
-  <!-- Magnet arch -->
-  <path d="M175 75 Q200 50 225 75" stroke="#111111" stroke-width="3" fill="none"/>
-  <!-- Mouse cursors -->
-  <polygon points="40,38 40,60 46,54 52,66 56,64 50,52 58,52" fill="#111111" transform="rotate(25,48,52)"/>
-  <polygon points="338,28 338,50 344,44 350,56 354,54 348,42 356,42" fill="#111111" transform="rotate(-20,347,42)"/>
-  <polygon points="28,138 28,160 34,154 40,166 44,164 38,152 46,152" fill="#111111" transform="rotate(10,36,152)"/>
-  <!-- Dashed attraction lines -->
-  <line x1="70" y1="50" x2="175" y2="84" stroke="#111111" stroke-width="2" stroke-dasharray="5,3"/>
-  <line x1="328" y1="40" x2="225" y2="82" stroke="#111111" stroke-width="2" stroke-dasharray="5,3"/>
-  <line x1="55" y1="148" x2="175" y2="92" stroke="#111111" stroke-width="2" stroke-dasharray="5,3"/>
-  <!-- Bottom flow strip -->
-  <rect x="0" y="244" width="400" height="36" fill="#111111"/>
-  <text x="12" y="267" font-family="Arial, sans-serif" font-size="11" font-weight="700" fill="#F5F0E8">Usuario aburrido  →  Tu web  →  Cliente con billetera abierta</text>
+  <rect x="172" y="203" width="36" height="30" fill="#111111"/>
+  <rect x="186" y="212" width="8" height="10" fill="#C9A84C"/>
+
+  <!-- Chimney 1 -->
+  <rect x="122" y="50" width="20" height="38" fill="#111111"/>
+  <rect x="118" y="46" width="28" height="10" fill="#111111"/>
+  <!-- Smoke 1 -->
+  <path d="M132 46 C128 38 136 30 130 22 C124 14 132 8 128 2" stroke="#C9A84C" stroke-width="4" stroke-linecap="round" fill="none"/>
+
+  <!-- Chimney 2 -->
+  <rect x="218" y="56" width="20" height="32" fill="#111111"/>
+  <rect x="214" y="52" width="28" height="10" fill="#111111"/>
+  <!-- Smoke 2 -->
+  <path d="M228 52 C224 44 232 36 226 28 C220 20 228 14 224 8" stroke="#C9A84C" stroke-width="4" stroke-linecap="round" fill="none"/>
+
+  <!-- Chimney 3 tall -->
+  <rect x="168" y="38" width="20" height="50" fill="#111111"/>
+  <rect x="164" y="34" width="28" height="10" fill="#111111"/>
+  <!-- Smoke 3 -->
+  <path d="M178 34 C173 24 182 16 175 8 C168 0 177 -5 172 -10" stroke="#111111" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.3"/>
+
+  <!-- MAGNET body (horseshoe U-shape) shadow -->
+  <path d="M313 42 C313 24 299 12 280 12 C261 12 247 24 247 42 L247 70 L260 70 L260 42 C260 31 269 24 280 24 C291 24 300 31 300 42 L300 70 L313 70 Z" fill="#111111" transform="translate(4,4)"/>
+  <!-- MAGNET body -->
+  <path d="M313 42 C313 24 299 12 280 12 C261 12 247 24 247 42 L247 70 L260 70 L260 42 C260 31 269 24 280 24 C291 24 300 31 300 42 L300 70 L313 70 Z" fill="#C9A84C" stroke="#111111" stroke-width="3"/>
+  <!-- Magnet poles gold caps -->
+  <rect x="247" y="68" width="14" height="10" fill="#C9A84C" stroke="#111111" stroke-width="2"/>
+  <rect x="299" y="68" width="14" height="10" fill="#C9A84C" stroke="#111111" stroke-width="2"/>
+
+  <!-- Dashed attraction arcs from magnet -->
+  <path d="M254 78 Q218 120 190 88" stroke="#111111" stroke-width="2" stroke-dasharray="6,4" fill="none"/>
+  <path d="M306 78 Q342 90 370 60" stroke="#111111" stroke-width="2" stroke-dasharray="6,4" fill="none"/>
+  <path d="M280 82 Q280 120 260 148" stroke="#111111" stroke-width="1.5" stroke-dasharray="5,4" fill="none"/>
+
+  <!-- Cursor 1 (left) -->
+  <path d="M28 44 L28 72 L36 64 L44 80 L50 77 L42 61 L52 61 Z" fill="#111111"/>
+  <!-- Cursor 2 (right) -->
+  <path d="M360 35 L360 63 L368 55 L376 71 L382 68 L374 52 L384 52 Z" fill="#111111"/>
+  <!-- Cursor 3 (top-center) -->
+  <path d="M340 8 L340 30 L346 24 L352 36 L357 34 L351 22 L359 22 Z" fill="#111111" transform="rotate(-20, 349, 22)"/>
+
+  <!-- Bottom strip -->
+  <rect x="0" y="260" width="400" height="40" fill="#111111"/>
+  <text x="0" y="260" font-family="sans-serif" font-size="0" fill="none"/>
+  <!-- Arrow sequence -->
+  <rect x="16" y="271" width="80" height="18" fill="#C9A84C"/>
+  <text x="20" y="284" font-family="'Space Grotesk',Arial,sans-serif" font-size="11" font-weight="700" fill="#111111">Usuario aburrido</text>
+  <path d="M98 280 L116 280 M110 274 L116 280 L110 286" stroke="#F5F0E8" stroke-width="2.5" stroke-linecap="square" fill="none"/>
+  <rect x="118" y="271" width="52" height="18" fill="#C9A84C"/>
+  <text x="122" y="284" font-family="'Space Grotesk',Arial,sans-serif" font-size="11" font-weight="700" fill="#111111">Tu web</text>
+  <path d="M172 280 L190 280 M184 274 L190 280 L184 286" stroke="#F5F0E8" stroke-width="2.5" stroke-linecap="square" fill="none"/>
+  <rect x="192" y="271" width="168" height="18" fill="#C9A84C"/>
+  <text x="196" y="284" font-family="'Space Grotesk',Arial,sans-serif" font-size="11" font-weight="700" fill="#111111">Cliente con billetera abierta</text>
 </svg>
