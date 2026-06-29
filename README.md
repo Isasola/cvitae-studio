@@ -2,7 +2,7 @@
 
 **studio.cvitae.lat** — UI component store and services showcase by CVitae.
 
-Neo-brutalist storefront selling premium React components, loaders, and wrappers. Built with React 18 + Vite 5 + Tailwind CSS 3.
+Neo-brutalist storefront selling premium React components, loaders, and wrappers. Built with React 18 + Vite 5 + Tailwind CSS 3 + Supabase.
 
 ---
 
@@ -14,53 +14,60 @@ Neo-brutalist storefront selling premium React components, loaders, and wrappers
 | Build | Vite 5 |
 | Styles | Tailwind CSS v3, custom utilities |
 | Fonts | Bebas Neue + Space Grotesk (self-hosted woff2) |
+| Database + Storage | Supabase (PostgreSQL + Storage) |
 | Deploy | Netlify (SPA redirect via netlify.toml) |
 | Payments | Lemon Squeezy (digital product delivery) |
 
 ---
 
-## Project structure
+## Environment variables
+
+Required in `.env.local` (dev) and Netlify → Site settings → Environment variables (prod):
 
 ```
-src/
-  components/
-    Header.jsx              Fixed nav with breathing logo
-    Footer.jsx
-    ServiceCard.jsx         Service cards with animated overlays
-    ProductCard.jsx         Product cards (hover GIF, LIVE DEMO, WATCH, BUY)
-    WhatsAppButton.jsx      Fixed WhatsApp CTA
-    FileStackLoader.jsx     Dr. Filo loader component (also sold)
-    LogoParticleLoader.jsx  Particle explosion loader (also sold)
-    Icon.jsx                SVG icon loader with cache
-    overlays/               Per-illustration CSS animation overlays
-      WebTacticaOverlay.jsx
-      IaWebOverlay.jsx
-      AdminPanelOverlay.jsx
-      ComponentesUIOverlay.jsx
-      LoadersOverlay.jsx
-  data/
-    productsData.js         Product catalog (source of truth)
-    blogData.js             Blog posts (source of truth)
-  hooks/
-    useAdminData.js         localStorage sync for admin panel
-  pages/
-    Home.jsx                Services + hero
-    Components.jsx          Component catalog
-    Wrappers.jsx            Wrappers & loaders catalog
-    Blog.jsx                Blog index
-    BlogPost.jsx            Blog post detail
-    License.jsx             License page (ES + EN)
-    Admin.jsx               Admin panel (products, blog, loader preview)
-    demos/
-      FilestackDemo.jsx     Full-screen demo for FileStack Loader
-      ParticleDemo.jsx      Full-screen demo for Logo Particle Loader
-public/
-  fonts/                    BebasNeue-Regular.woff2, SpaceGrotesk-Variable.woff2
-  icons/                    18 Tabler Icons SVGs
-  illustrations/            5 AI-generated PNGs (service cards)
-  products/                 Product screenshots and GIFs
-  logo.svg / logo-light.svg / favicon.svg / og-image.svg
+VITE_SUPABASE_URL=https://your-project.supabase.co
+VITE_SUPABASE_ANON_KEY=your_anon_key
+VITE_ADMIN_PASSWORD=your_secure_password
 ```
+
+See `.env.example` for the template.
+
+---
+
+## Supabase setup (run once)
+
+1. Create a project at supabase.com
+2. Go to **SQL Editor** → paste the full contents of `supabase-schema.sql` → **Run**
+   - Creates tables: `products`, `posts`, `page_views`, `sales`, `waitlist`
+   - Creates storage bucket `products` (public)
+   - Seeds the 3 initial products and 3 blog posts
+3. If the storage bucket step errors, create it manually: Storage → New bucket → name `products` → Public ✓
+
+---
+
+## Admin panel
+
+Navigate to `/admin` — protected by `VITE_ADMIN_PASSWORD`.
+
+| Tab | What it does |
+|-----|-------------|
+| **DASHBOARD** | KPIs (product count, post count, views, revenue), log sales manually |
+| **PRODUCTS** | Add/edit products, upload screenshot + GIF to Supabase Storage, set buyUrl, demoUrl, videoUrl |
+| **BLOG** | Create/edit/delete posts, toggle Published/Draft, Markdown editor |
+| **LOADERS** | Live preview of FileStackLoader and LogoParticleLoader |
+
+Changes publish **instantly** — no deploy needed.
+
+---
+
+## Adding a product (from the admin)
+
+1. `/admin` → PRODUCTS → + NEW PRODUCT
+2. Fill in: ID (slug), name, price, category, description
+3. Upload screenshot and GIF using the upload buttons (files go to Supabase Storage)
+4. Paste Lemon Squeezy checkout URL into **Buy URL**
+5. Set demo route (e.g. `/demo/filestack`) or external URL in **Demo URL**
+6. Save → live immediately
 
 ---
 
@@ -74,126 +81,113 @@ public/
 | `/blog` | Blog index |
 | `/blog/:slug` | Blog post |
 | `/license` | License |
-| `/demo/filestack` | FileStack Loader live demo |
-| `/demo/particle` | Logo Particle Loader live demo |
-| `/admin` | Admin panel |
+| `/demo/filestack` | FileStack Loader live demo (full-screen) |
+| `/demo/particle` | Logo Particle Loader live demo (full-screen) |
+| `/admin` | Admin panel (full-screen, password protected) |
 
 ---
 
-## Adding a new product
+## Project structure
 
-Edit `src/data/productsData.js`:
-
-```js
-{
-  id: 'unique-id',
-  name: 'Product Name',
-  category: 'component',   // 'component' | 'wrapper' | 'loader'
-  tagline: 'One line in English.',
-  description: '1-2 sentences in English.',
-  price: 19,
-  currency: 'USD',
-  screenshot: '/products/name-screenshot.png',  // place in public/products/
-  gifUrl: '/products/name-demo.gif',            // null if none (shows on hover)
-  videoUrl: 'https://youtube.com/watch?v=...',  // null if none
-  demoUrl: '/demo/your-page',                   // internal route or null
-  buyUrl: 'https://cvitaestudio.lemonsqueezy.com/checkout/buy/XXX',
-  tags: ['react', 'ui'],
-  status: 'available',   // 'available' | 'coming_soon'
-}
 ```
-
-Place assets in `public/products/`. Commit and push — Netlify redeploys automatically.
-
----
-
-## Admin panel
-
-Navigate to `/admin` to manage products and blog posts without touching code.
-
-- **PRODUCTS tab** — Edit name, price, URLs, screenshot paths, tags, status. Changes auto-save to localStorage. Click EXPORT JS to copy the updated `productsData.js` content.
-- **BLOG tab** — Create/edit/delete posts with Markdown content. EXPORT JS copies updated `blogData.js`.
-- **LOADER tab** — Live preview of FileStackLoader component (all sizes and speeds).
-
-**To make admin changes permanent:** Export JS → paste into the corresponding `src/data/` file → commit → push.
+src/
+  components/
+    Header.jsx              Nav with breathing logo
+    Footer.jsx
+    ServiceCard.jsx         Service cards with animated overlays
+    ProductCard.jsx         Hover GIF, LIVE DEMO, WATCH, BUY
+    WhatsAppButton.jsx      Fixed WhatsApp CTA
+    FileStackLoader.jsx     Dr. Filo loader (also sold as product)
+    LogoParticleLoader.jsx  Particle explosion loader (also sold)
+    overlays/               Per-illustration CSS animation overlays
+  data/
+    productsData.js         Fallback product data (Supabase is primary)
+    blogData.js             Fallback blog data
+  hooks/
+    useAdminData.js         Re-exports from useSupabaseData
+    useSupabaseData.js      useProducts, usePosts, uploadMedia, fetchStats, addSale
+  lib/
+    supabase.js             Supabase client (reads from VITE_ env vars)
+  pages/
+    Admin.jsx               Admin panel
+    Blog.jsx                Blog index
+    BlogPost.jsx            Blog post detail
+    Components.jsx          Component catalog
+    Wrappers.jsx            Wrappers & Loaders catalog
+    demos/
+      FilestackDemo.jsx     FileStack Loader live demo page
+      ParticleDemo.jsx      Logo Particle Loader live demo page
+public/
+  fonts/                    BebasNeue-Regular.woff2, SpaceGrotesk-Variable.woff2
+  icons/                    18 Tabler Icons SVGs
+  illustrations/            5 AI-generated service card PNGs
+  products/                 Local fallback assets (ops-console screenshot + gif)
+  logo.svg / logo-light.svg / favicon.svg
+supabase-schema.sql         Full DB schema — run this in Supabase SQL Editor
+```
 
 ---
 
 ## Selling on Lemon Squeezy
 
-### Setup (one-time)
+### One-time setup
+1. lemonsqueezy.com → create store "CVitae Studio" → currency USD
+2. Connect payout (bank or PayPal)
 
-1. Create account at lemonsqueezy.com
-2. Create store: "CVitae Studio" — currency USD
-3. Connect payout (bank account or PayPal)
-
-### Adding a product
-
-1. Dashboard → Products → New Product
-2. Type: **Digital / Software**
-3. Price: one-time (not subscription)
-4. Upload the product ZIP file
-5. Use the product screenshot as cover image
-6. Publish → Share → Copy checkout URL
-7. Paste URL into `productsData.js` → `buyUrl` field
-
-### Current products
-
-| Product | Price | Status |
-|---------|-------|--------|
-| OPS Console UI | $19 | buyUrl pending |
-| FileStack Loader | $9 | buyUrl pending |
-| Logo Particle Loader | $12 | buyUrl pending |
+### Per product
+1. Dashboard → Products → New Product → Digital/Software
+2. One-time price, upload product ZIP, use screenshot as cover
+3. Publish → Share → copy checkout URL
+4. Paste URL in `/admin` → PRODUCTS → edit product → **Buy URL** → Save
 
 ### What to include in each ZIP
 
-**OPS Console UI** (`ops-console.zip`):
-- `src/components/OpsConsole.jsx` + any sub-components
-- `README.md` with installation and prop docs
+**OPS Console UI** — `OpsConsole.jsx` + sub-components + README with props
+**FileStack Loader** — `FileStackLoader.jsx` (single file, zero dependencies) + README
+**Logo Particle Loader** — `LogoParticleLoader.jsx` (single file, zero dependencies) + README with CORS note
 
-**FileStack Loader** (`filestack-loader.zip`):
-- `src/components/FileStackLoader.jsx` (single file, no dependencies)
-- `README.md`
+The background images (`bg-workshop.png`, `bg-circuit.png`) are for the demo sites only — buyers get the `.jsx` file only.
 
-**Logo Particle Loader** (`logo-particle-loader.zip`):
-- `src/components/LogoParticleLoader.jsx` (single file, no dependencies)
-- `README.md` with CORS note for external images
+---
+
+## Current products
+
+| Product | Price | Demo | Buy URL |
+|---------|-------|------|---------|
+| OPS Console UI | $19 | — | pending |
+| FileStack Loader | $9 | `/demo/filestack` | pending |
+| Logo Particle Loader | $12 | `/demo/particle` | pending |
 
 ---
 
 ## Deploy to Netlify
 
 ### First deploy
-
-1. app.netlify.com → Add new site → Import from GitHub
-2. Select repo: `Isasola/cvitae-studio`
-3. Build command: `npm run build`
-4. Publish directory: `dist`
+1. app.netlify.com → Add new site → Import from GitHub → `Isasola/cvitae-studio`
+2. Build command: `npm run build`
+3. Publish directory: `dist`
+4. Add environment variables (VITE_SUPABASE_URL, VITE_SUPABASE_ANON_KEY, VITE_ADMIN_PASSWORD)
 5. Deploy
 
 ### Custom domain
-
 1. Netlify → Site settings → Domain management → Add custom domain → `studio.cvitae.lat`
-2. In Namecheap Advanced DNS, add CNAME:
-   - Host: `studio`
-   - Value: `cvitae-studio-xxxx.netlify.app`
-   - TTL: Automatic
+2. Namecheap Advanced DNS → add CNAME: Host `studio`, Value `cvitae-studio-xxxx.netlify.app`
 3. Wait 5–30 min → SSL auto-provisioned
 
 ### Auto-redeploy
-
-Every `git push` to `master` triggers a new deploy. No manual steps needed.
+Every `git push` to `master` triggers a new deploy. Content changes (products, blog) go through Supabase and are instant — no deploy needed.
 
 ---
 
 ## Pending before launch
 
+- [ ] Run `supabase-schema.sql` in Supabase SQL Editor
+- [ ] Add env vars in Netlify (VITE_SUPABASE_URL, VITE_SUPABASE_ANON_KEY, VITE_ADMIN_PASSWORD)
+- [ ] Configure CNAME `studio` in Namecheap → Netlify domain
+- [ ] Create Lemon Squeezy products → paste `buy_url` for all 3 from `/admin`
+- [ ] Upload screenshots for FileStack and Particle loaders from `/admin`
+- [ ] Record product videos → add `video_url` from `/admin`
 - [ ] Optimize `ops-console-demo.gif` (2.2MB → <800KB via ezgif.com/optimize)
-- [ ] Create Lemon Squeezy products and paste `buyUrl` for all 3 products
-- [ ] Add `videoUrl` to OPS Console after recording screen video
-- [ ] Add product screenshots for FileStack and Particle loaders (`/products/filestack-screenshot.png`, `/products/particle-screenshot.png`)
-- [ ] Deploy to Netlify + configure CNAME
-- [ ] Add Google Analytics GA4 after site is live
 
 ---
 
