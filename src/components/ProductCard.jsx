@@ -1,6 +1,12 @@
+import { Link } from 'react-router-dom'
+
 export default function ProductCard({ product }) {
-  const { name, tagline, description, price, currency, screenshot, demoUrl, buyUrl, status } = product
+  const { name, tagline, description, price, currency, screenshot, gifUrl, videoUrl, demoUrl, buyUrl, status } = product
+  const isInternalDemo = demoUrl && demoUrl.startsWith('/')
   const isComingSoon = status === 'coming_soon'
+
+  // Extract YouTube video ID from URL
+  const youtubeId = videoUrl ? videoUrl.match(/(?:v=|youtu\.be\/)([^&?/]+)/)?.[1] : null
 
   return (
     <article className="border-[3px] border-black bg-cream flex flex-col relative shadow-brutal transition-all hover:shadow-none hover:translate-x-[6px] hover:translate-y-[6px] duration-100">
@@ -10,9 +16,25 @@ export default function ProductCard({ product }) {
         </div>
       )}
 
-      <div className="border-b-[3px] border-black bg-black/5 aspect-video overflow-hidden flex items-center justify-center">
+      {/* Media: GIF on hover > screenshot fallback */}
+      <div className="border-b-[3px] border-black bg-black/5 aspect-video overflow-hidden flex items-center justify-center relative group">
         {screenshot ? (
-          <img src={screenshot} alt={name} className="w-full h-full object-cover" loading="lazy" />
+          <>
+            <img
+              src={screenshot}
+              alt={name}
+              className={`w-full h-full object-cover absolute inset-0 transition-opacity duration-300 ${gifUrl ? 'group-hover:opacity-0' : ''}`}
+              loading="lazy"
+            />
+            {gifUrl && (
+              <img
+                src={gifUrl}
+                alt={`${name} demo`}
+                className="w-full h-full object-cover absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                loading="lazy"
+              />
+            )}
+          </>
         ) : (
           <div className="w-full h-full flex items-center justify-center bg-black/5">
             <span className="font-display text-5xl text-black/20">PREVIEW</span>
@@ -54,13 +76,36 @@ export default function ProductCard({ product }) {
           )}
 
           {demoUrl && (
+            isInternalDemo ? (
+              <Link
+                to={demoUrl}
+                className="-ml-[3px] flex-1 text-center py-3 bg-cream text-black border-[3px] border-black font-body font-bold text-sm tracking-wide hover:bg-black hover:text-cream transition-colors duration-100"
+              >
+                LIVE DEMO
+              </Link>
+            ) : (
+              <a
+                href={demoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="-ml-[3px] flex-1 text-center py-3 bg-cream text-black border-[3px] border-black font-body font-bold text-sm tracking-wide hover:bg-black hover:text-cream transition-colors duration-100"
+              >
+                PREVIEW
+              </a>
+            )
+          )}
+
+          {youtubeId && (
             <a
-              href={demoUrl}
+              href={videoUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="-ml-[3px] flex-1 text-center py-3 bg-cream text-black border-[3px] border-black font-body font-bold text-sm tracking-wide hover:bg-black hover:text-cream transition-colors duration-100"
+              className="-ml-[3px] flex-1 text-center py-3 bg-cream text-black border-[3px] border-black font-body font-bold text-sm tracking-wide hover:bg-gold hover:text-black transition-colors duration-100 flex items-center justify-center gap-2"
             >
-              PREVIEW
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+              WATCH
             </a>
           )}
         </div>

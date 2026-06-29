@@ -4,118 +4,175 @@
 Sitio web oficial de CVitae Studio — tienda de componentes UI y vitrina de servicios de desarrollo.
 Deploy target: studio.cvitae.lat
 
-## Repo relacionado
-- Este repo: `Isasola/cvitae-studio` — el sitio web (lo que el cliente ve)
-- Producto #1: `Isasola/ops-console-ui` — el código del componente que se vende
+## Repos relacionados
+- Este repo: `Isasola/cvitae-studio` — el sitio web
+- Producto #1: `Isasola/ops-console-ui` — fuente del OPS Console UI
+- `isaso/file-stack-loader` — demo site del FileStack Loader
+- `isaso/logo-particle-loader` — demo site del Logo Particle Loader
 
 ## Stack
 React 18 + Vite 5 + Tailwind CSS v3 + React Router v6
-Deploy: Netlify (conectar repo, build command: `npm run build`, publish dir: `dist`)
+Deploy: Netlify (build command: `npm run build`, publish dir: `dist`)
 
 ---
 
-## Para agregar un nuevo producto al catálogo
+## Rutas del sitio
 
-Solo editás `src/data/productsData.js` — una entrada nueva en el array:
+| Path | Página |
+|------|--------|
+| `/` | Home — servicios + hero |
+| `/components` | Catálogo de componentes |
+| `/wrappers` | Catálogo de wrappers & loaders |
+| `/blog` | Blog index |
+| `/blog/:slug` | Post individual |
+| `/license` | Licencia |
+| `/demo/filestack` | Demo live FileStack Loader (full-screen, sin nav) |
+| `/demo/particle` | Demo live Logo Particle Loader (full-screen, sin nav) |
+| `/admin` | Panel de admin (full-screen, sin nav) |
+
+Las rutas `/admin` y `/demo/*` son full-screen — no comparten Header ni Footer con el resto del sitio.
+
+---
+
+## Componentes destacados
+
+### FileStackLoader
+`src/components/FileStackLoader.jsx`
+Loader con Dr. Filo — personaje SVG original que tira archivos a una caja con trayectorias en arco.
+Props: `size` ("sm"|"md"|"lg"), `speed` ("slow"|"normal"|"fast"), `label` (string|null)
+Sin dependencias externas. CSS keyframes propios en `src/index.css`.
+
+### LogoParticleLoader
+`src/components/LogoParticleLoader.jsx`
+Loader de canvas — explota el logo en partículas, desaparecen, y se reconstruyen lentamente.
+Props: `logoSrc`, `width`, `height`, `particleSize` (default 2), `label`, `autoPlay` (default true)
+Usa Canvas 2D con muestreo 4× de resolución para colores precisos.
+
+### ServiceCard + overlays
+`src/components/ServiceCard.jsx` mapea ilustraciones PNG a overlays animados.
+Cada overlay es un componente en `src/components/overlays/` con CSS keyframes únicos (ej. `magnetPull_w1`).
+
+### ProductCard
+`src/components/ProductCard.jsx`
+GIF on hover (screenshot siempre visible, GIF en capa encima). 
+`demoUrl` que empieza con `/` → React Router `<Link>` (LIVE DEMO). URL externa → `<a target="_blank">` (PREVIEW).
+`videoUrl` de YouTube → botón WATCH.
+
+---
+
+## Panel de admin
+
+`/admin` — página full-screen, sin nav compartida.
+- **Tab PRODUCTS**: editar todos los campos de cada producto. Auto-save a localStorage.
+- **Tab BLOG**: crear/editar/eliminar posts. Contenido en Markdown.
+- **Tab LOADER**: preview vivo de FileStackLoader en todos los tamaños y velocidades.
+- **Botón EXPORT JS**: copia código listo para pegar en `src/data/productsData.js` o `blogData.js`.
+
+Los cambios del admin se persisten en localStorage y se reflejan en vivo en las páginas públicas
+vía hooks `useAdminProducts()` y `useAdminPosts()` (en `src/hooks/useAdminData.js`).
+Para hacerlos permanentes: EXPORT JS → pegar en el archivo fuente → commit → push.
+
+---
+
+## Para agregar un nuevo producto
+
+Editar `src/data/productsData.js`:
 
 ```js
 {
   id: 'nombre-unico',
   name: 'Nombre del producto',
-  category: 'component',   // 'component' o 'wrapper'
+  category: 'component',   // 'component' | 'wrapper' | 'loader'
   tagline: 'Una línea corta en inglés.',
   description: 'Descripción de 1-2 oraciones en inglés.',
   price: 19,
   currency: 'USD',
   screenshot: '/products/nombre-screenshot.png',  // subir a public/products/
   gifUrl: '/products/nombre-demo.gif',            // null si no hay
-  demoUrl: 'https://...',                         // null si no hay demo
-  buyUrl: 'https://...',                          // link de Lemon Squeezy
+  videoUrl: 'https://youtube.com/watch?v=...',    // null si no hay
+  demoUrl: '/demo/nombre',                        // ruta interna o null
+  buyUrl: 'https://cvitaestudio.lemonsqueezy.com/checkout/buy/XXX',
   tags: ['react', 'ui'],
-  status: 'available',                            // 'available' o 'coming_soon'
+  status: 'available',   // 'available' | 'coming_soon'
 }
 ```
 
-Los assets del producto van en `public/products/`.
+Assets en `public/products/`. Commit + push → Netlify redeploya automático.
 
 ---
 
-## Lemon Squeezy — Setup completo
+## Blog
 
-### 1. Crear cuenta
-https://lemonsqueezy.com → Sign up → crear store con nombre "CVitae Studio"
+Posts en `src/data/blogData.js`. Campos: `slug`, `title`, `date`, `tags`, `excerpt`, `readTime`, `content` (Markdown), `link` (URL externa opcional).
+Los posts también se pueden crear/editar desde `/admin` (Tab BLOG).
+Idioma: inglés (para alcance global y SEO en inglés).
 
-### 2. Configurar el store
-- Store name: CVitae Studio
-- Store URL: cvitaestudio (o similar)
-- Currency: USD
-- Payout: conectar cuenta bancaria o PayPal
+---
 
-### 3. Crear el primer producto — OPS Console UI
-- Dashboard → Products → New Product
-- **Name:** OPS Console UI
-- **Description:** Full-featured admin panel React component. Brief room, users, content, tokens — all in one dark terminal. Drop it into any project.
-- **Price:** $19 USD (one-time, not subscription)
-- **Product type:** Digital / Software
-- **File to deliver:** subir `ops-console.zip` (el código del componente)
-- **Cover image:** usar `ops-console-screenshot.png`
-- Guardar y publicar
+## Productos actuales
 
-### 4. Obtener el buy link
-- En el producto creado → Share → Copy checkout URL
-- Formato: `https://cvitaestudio.lemonsqueezy.com/checkout/buy/XXXXXXXX`
+| Producto | Precio | demoUrl | buyUrl |
+|---------|--------|---------|--------|
+| OPS Console UI | $19 | null (pendiente) | null (pendiente) |
+| FileStack Loader | $9 | /demo/filestack | null (pendiente) |
+| Logo Particle Loader | $12 | /demo/particle | null (pendiente) |
 
-### 5. Pegar el link en el código
-Abrir `src/data/productsData.js` y reemplazar:
-```js
-buyUrl: null,
-```
-por:
-```js
-buyUrl: 'https://cvitaestudio.lemonsqueezy.com/checkout/buy/XXXXXXXX',
-```
-Guardar → commit → push → Netlify redeploya automático.
+---
 
-### 6. Webhooks (opcional pero recomendado)
-Lemon Squeezy puede notificarte por email o webhook cuando alguien compra.
-Settings → Webhooks → Add webhook → URL a tu endpoint (si querés automatizar algo después).
+## Lemon Squeezy — Setup
+
+### Setup inicial
+1. lemonsqueezy.com → crear store "CVitae Studio", moneda USD
+2. Conectar cuenta de pago
+
+### Por cada producto
+1. Dashboard → Products → New Product → Digital/Software
+2. Precio one-time, subir ZIP del componente, usar screenshot como cover
+3. Publicar → Share → copiar checkout URL
+4. Pegar en `productsData.js` → `buyUrl` → commit → push
+
+### Qué incluir en cada ZIP
+
+**OPS Console UI** (`ops-console.zip`): componente + README con props
+**FileStack Loader** (`filestack-loader.zip`): `FileStackLoader.jsx` solo — sin dependencias externas
+**Logo Particle Loader** (`logo-particle-loader.zip`): `LogoParticleLoader.jsx` solo — nota CORS para imágenes externas
+
+Las imágenes de fondo (`bg-workshop.png`, `bg-circuit.png`) son solo para las páginas de demo en sus repos separados. Los compradores reciben solo el `.jsx`.
 
 ---
 
 ## Deploy en Netlify
 
 ### Primera vez
-1. app.netlify.com → Add new site → Import from GitHub
-2. Seleccionar repo `Isasola/cvitae-studio`
-3. Build command: `npm run build`
-4. Publish directory: `dist`
-5. Deploy
+1. app.netlify.com → Add new site → Import from GitHub → `Isasola/cvitae-studio`
+2. Build command: `npm run build`
+3. Publish directory: `dist`
+4. Deploy
 
 ### Dominio personalizado
-1. En Netlify: Site settings → Domain management → Add custom domain → `studio.cvitae.lat`
-2. Netlify te da un dominio tipo `cvitae-studio-xxxx.netlify.app`
-3. En Namecheap: Advanced DNS → Add CNAME record:
+1. Netlify → Site settings → Domain management → Add custom domain → `studio.cvitae.lat`
+2. En Namecheap Advanced DNS, agregar CNAME:
    - Host: `studio`
    - Value: `cvitae-studio-xxxx.netlify.app`
    - TTL: Automatic
-4. Esperar propagación (5-30 min) → Netlify detecta el dominio y emite SSL automático
+3. Esperar 5-30 min → SSL auto-emitido
 
 ### Redeploy automático
-Cada `git push` al branch `master` dispara un nuevo deploy en Netlify. No necesitás hacer nada manual.
+Cada `git push` al branch `master` dispara un nuevo deploy. Sin pasos manuales.
 
 ---
 
 ## Variables de entorno
-Por ahora ninguna. Cuando integres Lemon Squeezy webhooks o analytics, se agregan en:
+Por ahora ninguna. Cuando integres webhooks o analytics:
 Netlify → Site settings → Environment variables
 
 ---
 
 ## Pendientes para próxima sesión
-- [ ] Agregar `demoUrl` al ops-console cuando el demo esté online
-- [ ] Agregar `buyUrl` al ops-console cuando esté en Lemon Squeezy
-- [ ] Grabar GIF más corto del ops-console (el actual pesa 2.2MB — idealmente < 800KB)
-- [ ] Optimizar el GIF con https://ezgif.com/optimize antes del deploy
-- [ ] Producto #2: definir qué wrapper o loader vender primero
-- [ ] OG image: considerar convertir el SVG a PNG real (algunos scrapers no soportan SVG en og:image)
-- [ ] Google Analytics: agregar GA4 tag en index.html cuando el sitio esté live
+- [ ] Crear productos en Lemon Squeezy y pegar `buyUrl` en los 3 productos
+- [ ] Agregar `videoUrl` al OPS Console después de grabar el video
+- [ ] Screenshots para FileStack y Particle Loader (`/products/filestack-screenshot.png`, `/products/particle-screenshot.png`)
+- [ ] Optimizar `ops-console-demo.gif` (2.2MB → <800KB via ezgif.com/optimize)
+- [ ] Deploy en Netlify + configurar CNAME `studio` en Namecheap
+- [ ] OG image: considerar convertir SVG a PNG (algunos scrapers no soportan SVG en og:image)
+- [ ] Google Analytics GA4 — agregar en index.html cuando el sitio esté live

@@ -11,6 +11,7 @@ export default function Footer() {
             <NavLink to="/components" className="font-body text-sm font-medium text-black hover:text-gold transition-colors">Components</NavLink>
             <NavLink to="/wrappers" className="font-body text-sm font-medium text-black hover:text-gold transition-colors">Wrappers & Loaders</NavLink>
             <NavLink to="/license" className="font-body text-sm font-medium text-black hover:text-gold transition-colors">License</NavLink>
+            <NavLink to="/blog" className="font-body text-sm font-medium text-black hover:text-gold transition-colors">Blog</NavLink>
           </nav>
         </div>
 

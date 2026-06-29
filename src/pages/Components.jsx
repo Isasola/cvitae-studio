@@ -1,9 +1,10 @@
-import { products } from '../data/productsData.js'
+import { useAdminProducts } from '../hooks/useAdminData.js'
 import ProductCard from '../components/ProductCard.jsx'
 
-const components = products.filter(p => p.category === 'component')
-
 export default function Components() {
+  const { products } = useAdminProducts()
+  const components = products.filter(p => p.category === 'component')
+
   return (
     <div className="max-w-6xl mx-auto px-4 py-16">
       <div className="border-[3px] border-black p-6 md:p-8 mb-12">

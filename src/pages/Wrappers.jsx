@@ -1,9 +1,9 @@
-import { products } from '../data/productsData.js'
+import { useAdminProducts } from '../hooks/useAdminData.js'
 import ProductCard from '../components/ProductCard.jsx'
 
-const wrappers = products.filter(p => p.category === 'wrapper')
-
 export default function Wrappers() {
+  const { products } = useAdminProducts()
+  const wrappers = products.filter(p => p.category === 'wrapper' || p.category === 'loader')
   return (
     <div className="max-w-6xl mx-auto px-4 py-16">
       <div className="border-[3px] border-black p-6 md:p-8 mb-12">

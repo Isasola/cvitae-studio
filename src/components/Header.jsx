@@ -4,6 +4,7 @@ const NAV_LINKS = [
   { to: '/', label: 'Home', end: true },
   { to: '/components', label: 'Components' },
   { to: '/wrappers', label: 'Wrappers & Loaders' },
+  { to: '/blog', label: 'Blog' },
 ]
 
 export default function Header() {
@@ -11,7 +12,18 @@ export default function Header() {
     <header className="fixed top-0 left-0 right-0 z-50 bg-cream border-b-[3px] border-black">
       <div className="max-w-6xl mx-auto px-4 h-[72px] flex items-center justify-between">
         <NavLink to="/" className="flex-shrink-0">
-          <img src="/logo.svg" alt="CVitae Studio" className="h-10" />
+          <img
+            src="/logo.svg"
+            alt="CVitae Studio"
+            className="h-10"
+            style={{ animation: 'logoBreathe 4s ease-in-out infinite' }}
+          />
+          <style>{`
+            @keyframes logoBreathe {
+              0%, 100% { transform: scale(1) translateY(0px); filter: drop-shadow(0 0 0px rgba(201,168,76,0)); }
+              50%       { transform: scale(1.04) translateY(-1px); filter: drop-shadow(0 0 6px rgba(201,168,76,0.5)); }
+            }
+          `}</style>
         </NavLink>
 
         <nav className="flex items-center">

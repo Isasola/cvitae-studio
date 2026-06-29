@@ -1,15 +1,32 @@
+import WebTacticaOverlay from './overlays/WebTacticaOverlay.jsx'
+import IaWebOverlay from './overlays/IaWebOverlay.jsx'
+import AdminPanelOverlay from './overlays/AdminPanelOverlay.jsx'
+import ComponentesUIOverlay from './overlays/ComponentesUIOverlay.jsx'
+import LoadersOverlay from './overlays/LoadersOverlay.jsx'
+
 const WA_URL = 'https://wa.me/595992954169'
 
+const OVERLAYS = {
+  'web-tactica.png':   WebTacticaOverlay,
+  'ia-web.png':        IaWebOverlay,
+  'admin-panel.png':   AdminPanelOverlay,
+  'componentes-ui.png': ComponentesUIOverlay,
+  'loaders.png':       LoadersOverlay,
+}
+
 export default function ServiceCard({ illustration, title, copy, techBadges, clients }) {
+  const Overlay = OVERLAYS[illustration] || null
+
   return (
     <article className="border-[3px] border-black bg-cream flex flex-col shadow-brutal transition-shadow hover:shadow-none hover:translate-x-[6px] hover:translate-y-[6px] duration-100">
-      <div className="border-b-[3px] border-black">
+      <div className="border-b-[3px] border-black relative">
         <img
           src={`/illustrations/${illustration}`}
           alt={title}
           className="w-full block"
           loading="lazy"
         />
+        {Overlay && <Overlay />}
       </div>
 
       <div className="p-5 flex flex-col flex-1 gap-4">

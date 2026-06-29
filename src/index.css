@@ -41,3 +41,32 @@ body {
 .shadow-brutal-gold {
   box-shadow: 6px 6px 0px 0px #C9A84C;
 }
+
+/* ── FileStackLoader keyframes ── */
+@keyframes fall-gravity {
+  0%   { transform: translateY(0); opacity: 1; }
+  60%  { transform: translateY(calc(var(--fall-distance) * 0.55)); }
+  85%  { transform: translateY(calc(var(--fall-distance) * 0.88)); }
+  100% { transform: translateY(var(--fall-distance)); opacity: 1; }
+}
+@keyframes piece-spawn {
+  0%   { opacity: 0; transform: scale(0.6) translateY(-6px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+@keyframes slot-fill {
+  0%   { filter: brightness(1); }
+  40%  { filter: brightness(1.35); }
+  100% { filter: brightness(1); }
+}
+@keyframes stack-flash {
+  0%   { opacity: 1; }
+  25%  { opacity: 0.2; }
+  50%  { opacity: 1; }
+  75%  { opacity: 0.2; }
+  100% { opacity: 0; }
+}
+.animate-label-pulse { animation: label-pulse 2.2s ease-in-out infinite; }
+@keyframes label-pulse {
+  0%, 100% { opacity: 0.6; }
+  50%       { opacity: 1; }
+}
