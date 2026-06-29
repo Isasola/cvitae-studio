@@ -3,7 +3,9 @@ import { useAdminPosts } from '../hooks/useAdminData.js'
 
 export default function Blog() {
   const { posts } = useAdminPosts()
-  const sorted = [...posts].sort((a, b) => new Date(b.date) - new Date(a.date))
+  const sorted = [...posts]
+    .filter(p => p.published !== false)
+    .sort((a, b) => new Date(b.date) - new Date(a.date))
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-16">
