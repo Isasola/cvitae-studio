@@ -2,29 +2,29 @@ import ServiceCard from '../components/ServiceCard.jsx'
 
 const SERVICES = [
   {
-    illustration: 'web-tactica.svg',
+    illustration: 'web-tactica.png',
     title: 'Desarrollo de páginas web tácticas',
     copy: 'No hacemos folletos digitales. Creamos terminales de conversión ultra rápidas que retienen atención en 1.5 segundos.',
   },
   {
-    illustration: 'ia-web.svg',
+    illustration: 'ia-web.png',
     title: 'Integración de IA a páginas existentes',
     copy: 'Le inyectamos un cerebro a tu web actual. Conectamos modelos avanzados a tus formularios y flujos para que tu sitio trabaje solo, 24/7.',
     techBadges: ['Gemini API', 'Claude', 'AWS Bedrock'],
   },
   {
-    illustration: 'admin-panel.svg',
+    illustration: 'admin-panel.png',
     title: 'Admin panels y consolas de datos',
     copy: 'Centralizamos tu operación. Un solo lugar donde ves tus datos, facturación y flujos sin fricción.',
     clients: ['cvitae.lat', 'luminosapy.com'],
   },
   {
-    illustration: 'componentes-ui.svg',
+    illustration: 'componentes-ui.png',
     title: 'Componentes UI y Wrappers premium',
     copy: 'Bloques de código limpio para developers y founders. Copiás, pegás, tenés interfaz premium funcionando.',
   },
   {
-    illustration: 'loaders.svg',
+    illustration: 'loaders.png',
     title: 'Loaders y micro-animaciones',
     copy: 'La cura para la ansiedad del usuario. Loaders que hacen que la espera se sienta como parte de la experiencia.',
   },
