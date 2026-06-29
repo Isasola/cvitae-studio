@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 280" fill="none">
+  <rect width="400" height="280" fill="#F5F0E8"/>
+  <!-- Hourglass group (slightly tilted) -->
+  <g transform="rotate(-6,200,140)">
+    <!-- Top cap -->
+    <rect x="128" y="24" width="144" height="16" fill="#111111"/>
+    <!-- Bottom cap -->
+    <rect x="128" y="240" width="144" height="16" fill="#111111"/>
+    <!-- Top half -->
+    <path d="M128 40 L200 140 L272 40 Z" fill="#F5F0E8" stroke="#111111" stroke-width="3"/>
+    <!-- Bottom half -->
+    <path d="M128 240 L200 140 L272 240 Z" fill="#F5F0E8" stroke="#111111" stroke-width="3"/>
+    <!-- Sand fill (top, settling) -->
+    <path d="M140 40 L200 128 L260 40 Z" fill="#C9A84C" opacity="0.7"/>
+    <!-- Sand fill (bottom, accumulating) -->
+    <path d="M152 240 L200 200 L248 240 Z" fill="#C9A84C" opacity="0.5"/>
+    <!-- Waist joint -->
+    <rect x="192" y="134" width="16" height="12" fill="#111111"/>
+  </g>
+  <!-- Falling grain transforming sequence (outside, below hourglass) -->
+  <!-- Stage 1: grain (square) -->
+  <rect x="195" y="160" width="8" height="8" fill="#C9A84C" stroke="#111111" stroke-width="1.5"/>
+  <!-- Stage 2: proto-star -->
+  <polygon points="199,176 201,183 208,181 202,187 204,194 199,190 194,194 196,187 190,181 197,183" fill="#C9A84C" stroke="#111111" stroke-width="1.5"/>
+  <!-- Stage 3: full 6-point star -->
+  <polygon points="199,204 202,212 210,211 204,217 206,225 199,221 192,225 194,217 188,211 196,212" fill="#C9A84C" stroke="#111111" stroke-width="1.5"/>
+  <!-- Stage 4: abstract figure (fully transformed) -->
+  <rect x="186" y="238" width="10" height="16" fill="#111111"/>
+  <rect x="183" y="232" width="16" height="8" fill="#111111"/>
+  <rect x="183" y="254" width="6" height="10" fill="#C9A84C" stroke="#111111" stroke-width="1.5"/>
+  <rect x="193" y="254" width="6" height="10" fill="#C9A84C" stroke="#111111" stroke-width="1.5"/>
+  <!-- Sparkle accents -->
+  <line x1="224" y1="180" x2="234" y2="170" stroke="#C9A84C" stroke-width="2.5"/>
+  <line x1="234" y1="180" x2="224" y2="170" stroke="#C9A84C" stroke-width="2.5"/>
+  <line x1="164" y1="210" x2="174" y2="200" stroke="#C9A84C" stroke-width="2.5"/>
+  <line x1="174" y1="210" x2="164" y2="200" stroke="#C9A84C" stroke-width="2.5"/>
+  <line x1="238" y1="220" x2="245" y2="213" stroke="#C9A84C" stroke-width="2"/>
+  <line x1="245" y1="220" x2="238" y2="213" stroke="#C9A84C" stroke-width="2"/>
+  <!-- Label strip -->
+  <rect x="8" y="244" width="142" height="28" fill="#111111"/>
+  <text x="16" y="263" font-family="Arial, sans-serif" font-size="11" font-weight="900" fill="#F5F0E8">LA ESPERA ≠ VACÍO</text>
+</svg>

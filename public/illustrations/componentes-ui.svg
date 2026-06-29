@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 280" fill="none">
+  <rect width="400" height="280" fill="#F5F0E8"/>
+  <!-- Dark screen / target area -->
+  <rect x="218" y="44" width="158" height="200" fill="#111111" stroke="#111111" stroke-width="3"/>
+  <!-- Screen inner frame -->
+  <rect x="226" y="52" width="142" height="184" fill="#1a1a1a"/>
+  <!-- Empty slot (dashed gold) -->
+  <rect x="234" y="112" width="126" height="86" fill="#F5F0E8" stroke="#C9A84C" stroke-width="3" stroke-dasharray="7,3"/>
+  <text x="252" y="162" font-family="Arial, sans-serif" font-size="13" font-weight="900" fill="#111111">[ SLOT ]</text>
+  <!-- LEGO/metallic block body -->
+  <rect x="24" y="80" width="158" height="128" fill="#C9A84C" stroke="#111111" stroke-width="3"/>
+  <!-- Block face metallic sheen lines -->
+  <line x1="24" y1="100" x2="182" y2="100" stroke="#111111" stroke-width="1" opacity="0.4"/>
+  <line x1="24" y1="120" x2="182" y2="120" stroke="#111111" stroke-width="1" opacity="0.4"/>
+  <!-- Block studs (top) -->
+  <rect x="46" y="62" width="26" height="20" fill="#C9A84C" stroke="#111111" stroke-width="3"/>
+  <rect x="82" y="62" width="26" height="20" fill="#C9A84C" stroke="#111111" stroke-width="3"/>
+  <rect x="118" y="62" width="26" height="20" fill="#C9A84C" stroke="#111111" stroke-width="3"/>
+  <!-- Laser-etched code lines -->
+  <line x1="38" y1="114" x2="168" y2="114" stroke="#111111" stroke-width="2"/>
+  <text x="40" y="112" font-family="'Courier New', monospace" font-size="9" fill="#111111" font-weight="900">const block = {'{'}</text>
+  <line x1="38" y1="130" x2="168" y2="130" stroke="#111111" stroke-width="1"/>
+  <text x="50" y="128" font-family="'Courier New', monospace" font-size="9" fill="#111111">  style: premium</text>
+  <line x1="38" y1="146" x2="168" y2="146" stroke="#111111" stroke-width="1"/>
+  <text x="50" y="144" font-family="'Courier New', monospace" font-size="9" fill="#111111">  copy: true</text>
+  <line x1="38" y1="162" x2="168" y2="162" stroke="#111111" stroke-width="1"/>
+  <text x="40" y="160" font-family="'Courier New', monospace" font-size="9" fill="#111111">{'}'}</text>
+  <!-- Snap arrow -->
+  <line x1="184" y1="144" x2="230" y2="155" stroke="#111111" stroke-width="3"/>
+  <polygon points="230,155 218,146 219,160" fill="#111111"/>
+  <!-- Snap indicator dots -->
+  <rect x="196" y="138" width="5" height="5" fill="#111111"/>
+  <rect x="206" y="141" width="5" height="5" fill="#111111"/>
+  <rect x="216" y="144" width="5" height="5" fill="#111111"/>
+</svg>
