@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 52" fill="none">
+  <!-- Left bracket -->
+  <rect x="4" y="4" width="6" height="44" fill="#111111"/>
+  <rect x="4" y="4" width="20" height="6" fill="#111111"/>
+  <rect x="4" y="42" width="20" height="6" fill="#111111"/>
+  <!-- CVITAE text block -->
+  <text x="32" y="34" font-family="'Bebas Neue', Impact, sans-serif" font-size="34" font-weight="400" fill="#111111" letter-spacing="1">CVITAE</text>
+  <!-- STUDIO tag -->
+  <rect x="33" y="38" width="64" height="11" fill="#C9A84C"/>
+  <text x="37" y="47" font-family="'Space Grotesk', Arial, sans-serif" font-size="9" font-weight="700" fill="#111111" letter-spacing="2">STUDIO</text>
+</svg>
