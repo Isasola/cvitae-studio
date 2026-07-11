@@ -11,7 +11,7 @@ export const products = [
     screenshot: '/products/ops-console-screenshot.png',
     gifUrl: '/products/ops-console-demo.gif',
     videoUrl: null,
-    demoUrl: null,
+    demoUrl: '/demo/ops-console',
     buyUrl: null,
     tags: ['admin', 'dashboard', 'react'],
     status: 'available',

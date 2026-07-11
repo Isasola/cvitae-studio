@@ -4,6 +4,7 @@ const NAV_LINKS = [
   { to: '/', label: 'Home', end: true },
   { to: '/components', label: 'Components' },
   { to: '/wrappers', label: 'Wrappers & Loaders' },
+  { to: '/generators/empty-state', label: 'Generators' },
   { to: '/blog', label: 'Blog' },
 ]
 

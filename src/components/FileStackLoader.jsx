@@ -185,6 +185,7 @@ export default function FileStackLoader({
   size = 'md',
   speed = 'normal',
   label = 'Loading...',
+  boxLogoSrc = null,
 }) {
   const cfg   = SIZE[size]   || SIZE.md
   const timing = SPEED[speed] || SPEED.normal
@@ -295,6 +296,25 @@ export default function FileStackLoader({
         {/* Stack box */}
         <div style={{ position: 'absolute', left: boxX, top: 10 }}>
           <StackBox width={cfg.boxW} height={cfg.boxH} />
+
+          {/* Logo overlay dentro del box */}
+          {boxLogoSrc && (
+            <img
+              src={boxLogoSrc}
+              alt="Brand logo"
+              style={{
+                position: 'absolute',
+                left: '50%',
+                top: '50%',
+                transform: 'translate(-50%, -50%)',
+                maxWidth: cfg.boxW * 0.55,
+                maxHeight: cfg.boxH * 0.4,
+                objectFit: 'contain',
+                opacity: 0.25,
+                pointerEvents: 'none',
+              }}
+            />
+          )}
 
           {/* Stacked items inside box */}
           {stackRows.map(item => {
