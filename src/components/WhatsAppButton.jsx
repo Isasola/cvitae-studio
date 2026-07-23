@@ -1,3 +1,5 @@
+import { trackEvent } from '../lib/analytics.js'
+
 const WA_URL = 'https://wa.me/595992954169'
 
 export default function WhatsAppButton() {
@@ -7,6 +9,7 @@ export default function WhatsAppButton() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Contactar por WhatsApp"
+      onClick={() => trackEvent('whatsapp_click')}
       className="fixed bottom-6 right-6 z-50 w-14 h-14 bg-gold border-[3px] border-black flex items-center justify-center hover:bg-black hover:text-cream transition-colors duration-100"
     >
       <svg viewBox="0 0 24 24" className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="square">

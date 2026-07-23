@@ -1,0 +1,13 @@
+# CVitae Studio
+
+CVitae Studio creates digital products and web development services. Web Express is a launch service for Paraguayan businesses: a responsive commercial page of up to six sections, starting at PYG 550,000. A custom domain is not included and is quoted separately. Initial deployment to Netlify or Vercel is included, subject to provider limits.
+
+Custom projects—such as shops, bookings, administrative panels, integrations, automation, multilingual sites, and AI features—are quoted after requirements are understood.
+
+Public routes:
+- /webs-paraguay — Web Express and custom web services
+- /portfolio/demo-climatizacion — conceptual demo for the fictional company ClimaNova Paraguay; it is not a real client or business
+- /components and /wrappers — digital products
+- /blog — CVitae Studio articles
+
+Contact requests for web services are submitted on /webs-paraguay. The private administration panel is not public content.
