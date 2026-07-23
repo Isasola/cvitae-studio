@@ -15,6 +15,8 @@ import EmptyStateGenerator from './pages/generators/EmptyStateGenerator.jsx'
 import GrowthLineDemo from './pages/demos/GrowthLineDemo.jsx'
 import NeoBrutalismDemo from './pages/demos/NeoBrutalismDemo.jsx'
 import OpsConsoleDemo from './pages/demos/OpsConsoleDemo.jsx'
+import WebsParaguay from './pages/WebsParaguay.jsx'
+import ClimatizacionDemo from './pages/ClimatizacionDemo.jsx'
 
 export default function App() {
   return (
@@ -22,6 +24,8 @@ export default function App() {
       <Routes>
         {/* Full-screen pages — no shared header/footer */}
         <Route path="/admin" element={<Admin />} />
+        <Route path="/admin/web-leads" element={<Admin initialTab="CONSULTAS WEB" />} />
+        <Route path="/portfolio/demo-climatizacion" element={<ClimatizacionDemo />} />
         <Route path="/demo/filestack"    element={<FilestackDemo />} />
         <Route path="/demo/particle"     element={<ParticleDemo />} />
         <Route path="/demo/growth-line"   element={<GrowthLineDemo />} />
@@ -35,6 +39,7 @@ export default function App() {
             <main className="flex-1 pt-[72px]">
               <Routes>
                 <Route path="/" element={<Home />} />
+                <Route path="/webs-paraguay" element={<WebsParaguay />} />
                 <Route path="/components" element={<Components />} />
                 <Route path="/wrappers" element={<Wrappers />} />
                 <Route path="/license" element={<License />} />

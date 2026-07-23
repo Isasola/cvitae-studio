@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useAdminPosts } from '../hooks/useAdminData.js'
+import Seo from '../components/Seo.jsx'
 
 export default function Blog() {
   const { posts } = useAdminPosts()
@@ -9,6 +10,7 @@ export default function Blog() {
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-16">
+      <Seo title="Blog | CVitae Studio" description="Artículos de CVitae Studio sobre desarrollo web, productos digitales y experiencia de usuario." path="/blog" />
       <div className="flex items-center gap-3 mb-12">
         <h1 className="font-display text-5xl tracking-widest">BLOG</h1>
         <div className="flex-1 h-[3px] bg-black" />

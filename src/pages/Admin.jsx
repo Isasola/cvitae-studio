@@ -1,27 +1,28 @@
-import { useState, useRef, useCallback } from 'react'
+import { useState, useRef, useCallback, useEffect } from 'react'
 import { useProducts, usePosts, uploadMedia, fetchStats, addSale } from '../hooks/useSupabaseData.js'
 import { products as defaultProducts } from '../data/productsData.js'
 import FileStackLoader from '../components/FileStackLoader.jsx'
 import LogoParticleLoader from '../components/LogoParticleLoader.jsx'
+import { supabase } from '../lib/supabase.js'
+import WebLeadsPanel from '../components/admin/WebLeadsPanel.jsx'
 
 // ── Auth ─────────────────────────────────────────────────────────────────────
 
-const ADMIN_PASS = import.meta.env.VITE_ADMIN_PASSWORD ?? 'cvitae2024'
-
 function LoginScreen({ onLogin }) {
+  const [email, setEmail] = useState('')
   const [pass, setPass]   = useState('')
   const [err, setErr]     = useState(false)
   const [shake, setShake] = useState(false)
 
-  function submit(e) {
+  async function submit(e) {
     e.preventDefault()
-    if (pass === ADMIN_PASS) {
-      onLogin()
-    } else {
+    const { data, error } = await supabase.auth.signInWithPassword({ email: email.trim(), password: pass })
+    if (error || data.user?.app_metadata?.role !== 'admin') {
+      if (data.session) await supabase.auth.signOut()
       setErr(true)
       setShake(true)
       setTimeout(() => setShake(false), 500)
-    }
+    } else onLogin(data.session)
   }
 
   return (
@@ -38,6 +39,7 @@ function LoginScreen({ onLogin }) {
         </div>
 
         <form onSubmit={submit} className="flex flex-col gap-4">
+          <label className="flex flex-col gap-1"><span className="font-body text-xs tracking-widest text-gold/60 uppercase">Email</span><input type="email" required value={email} onChange={e=>setEmail(e.target.value)} className="border-[3px] bg-black text-cream border-gold px-4 py-3"/></label>
           <div className="flex flex-col gap-1">
             <label className="font-body text-xs tracking-widest text-gold/60 uppercase">Password</label>
             <input
@@ -1139,13 +1141,17 @@ export function AdminPanelComponent({ children }) {
 
 // ── Main Admin page ───────────────────────────────────────────────────────────
 
-const TABS = ['DASHBOARD', 'PRODUCTS', 'FILES', 'BLOG', 'LOADERS']
+const TABS = ['DASHBOARD', 'CONSULTAS WEB', 'PRODUCTS', 'FILES', 'BLOG', 'LOADERS']
 
-export default function Admin() {
-  const [authed, setAuthed] = useState(false)
-  const [tab, setTab]       = useState('DASHBOARD')
+export default function Admin({ initialTab = 'DASHBOARD' }) {
+  const [authed, setAuthed] = useState(null)
+  const [tab, setTab]       = useState(initialTab)
+  const [newCount, setNewCount] = useState(0)
+  useEffect(()=>{supabase.auth.getSession().then(({data})=>setAuthed(data.session?.user?.app_metadata?.role==='admin'?data.session:false))},[])
+  useEffect(()=>{if(authed)supabase.from('web_service_leads').select('id',{count:'exact',head:true}).eq('status','new').then(({count})=>setNewCount(count??0))},[authed,tab])
 
-  if (!authed) return <LoginScreen onLogin={() => setAuthed(true)} />
+  if (authed === null) return <div className="min-h-screen bg-black text-gold grid place-items-center">VERIFICANDO SESIÓN…</div>
+  if (!authed) return <LoginScreen onLogin={setAuthed} />
 
   return (
     <div className="min-h-screen bg-black text-cream" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
@@ -1157,7 +1163,7 @@ export default function Admin() {
         </div>
 
         {/* Tabs */}
-        <nav className="flex gap-0">
+        <nav className="flex gap-0 overflow-x-auto">
           {TABS.map(t => (
             <button
               key={t}
@@ -1168,13 +1174,13 @@ export default function Admin() {
                   : 'bg-transparent text-gold/60 border-gold/20 hover:text-gold hover:border-gold/40'
               }`}
             >
-              {t}
+              {t}{t === 'CONSULTAS WEB' && newCount > 0 ? ` (${newCount})` : ''}
             </button>
           ))}
         </nav>
 
         <button
-          onClick={() => setAuthed(false)}
+          onClick={async () => { await supabase.auth.signOut(); setAuthed(false) }}
           className="font-body text-[10px] tracking-widest text-gold/30 hover:text-gold/70 transition-colors"
         >
           LOGOUT
@@ -1184,6 +1190,7 @@ export default function Admin() {
       {/* Content */}
       <main className="max-w-6xl mx-auto px-6 py-10">
         {tab === 'DASHBOARD' && <Dashboard />}
+        {tab === 'CONSULTAS WEB' && <WebLeadsPanel />}
         {tab === 'PRODUCTS'  && <ProductsTab />}
         {tab === 'FILES'     && <FilesTab />}
         {tab === 'BLOG'      && <BlogTab />}

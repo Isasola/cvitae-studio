@@ -1,5 +1,6 @@
 import { useParams, Link, Navigate } from 'react-router-dom'
 import { useAdminPosts } from '../hooks/useAdminData.js'
+import Seo from '../components/Seo.jsx'
 
 export default function BlogPost() {
   const { slug } = useParams()
@@ -12,6 +13,7 @@ export default function BlogPost() {
 
   return (
     <div className="max-w-3xl mx-auto px-4 py-16">
+      <Seo title={`${post.title} | CVitae Studio`} description={post.excerpt} path={`/blog/${post.slug}`} />
       <Link
         to="/blog"
         className="inline-flex items-center gap-2 font-body text-sm font-bold tracking-wide mb-10 border-[3px] border-black px-4 py-2 bg-cream hover:bg-black hover:text-cream transition-colors duration-100"

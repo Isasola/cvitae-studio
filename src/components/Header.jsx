@@ -2,6 +2,7 @@ import { NavLink } from 'react-router-dom'
 
 const NAV_LINKS = [
   { to: '/', label: 'Home', end: true },
+  { to: '/webs-paraguay', label: 'WEBS PARA NEGOCIOS' },
   { to: '/components', label: 'Components' },
   { to: '/wrappers', label: 'Wrappers & Loaders' },
   { to: '/generators/empty-state', label: 'Generators' },
@@ -27,7 +28,9 @@ export default function Header() {
           `}</style>
         </NavLink>
 
-        <nav className="flex items-center">
+        <NavLink to="/webs-paraguay" className="lg:hidden border-[3px] border-black bg-gold px-3 py-2 font-body text-xs font-bold">WEBS PARA NEGOCIOS</NavLink>
+
+        <nav className="hidden lg:flex items-center">
           {NAV_LINKS.map(({ to, label, end }) => (
             <NavLink
               key={to}

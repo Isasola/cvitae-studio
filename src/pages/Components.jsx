@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { useAdminProducts } from '../hooks/useAdminData.js'
 import ProductCard from '../components/ProductCard.jsx'
+import GrowthLine from '../components/GrowthLine.jsx'
 
 function LiveProductCard({ title, tagline, price, demoPath, tags, preview }) {
   return (
